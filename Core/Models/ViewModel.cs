@@ -1,6 +1,6 @@
 namespace Core.Models
 {
-    public abstract class ViewModel<TId> : IViewModel<TId> where TId : class
+    public abstract class ViewModel<TId> : IViewModel<TId>
     {
         public virtual TId Id { get; set; }
     }
