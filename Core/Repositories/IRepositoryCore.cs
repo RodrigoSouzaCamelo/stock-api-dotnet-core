@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using Core.Entities;
-using Core.Models;
 
-namespace Core.Services
+namespace Core.Repositories
 {
-    public interface IService<TViewModel, TEntity, TId> 
-        where TViewModel : IViewModel<TId>
+    public interface IRepositoryCore<TEntity, TId>
         where TEntity : IEntity<TId>
         where TId : class
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(TId id);
+        
+        IEnumerable<TEntity> GetAllAsNoTracking();
+        TEntity GetByIdAsNoTracking(TId id);
 
         void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
