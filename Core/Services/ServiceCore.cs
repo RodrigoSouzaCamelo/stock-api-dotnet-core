@@ -6,17 +6,16 @@ using Core.Repositories;
 
 namespace Core.Services
 {
-    public class Service<TViewModel, TEntity, TId> : IService<TViewModel, TEntity, TId>
+    public class Service<TViewModel, TEntity, TId> : IServiceCore<TViewModel, TEntity, TId>
         where TViewModel : ViewModel<TId>
         where TEntity : Entity<TId>
         where TId : class
     {
-        private IRepository<TEntity, TId> _repository;
-        private IMapper _mapper;
+        private readonly IRepositoryCore<TEntity, TId> _repository;
+        private readonly IMapper _mapper;
 
-        public Service(IRepository<TEntity, TId> repository, IMapper mapper)
+        public Service(IRepositoryCore<TEntity, TId> repository, IMapper mapper)
         {
-
             _repository = repository;
             _mapper = mapper;
         }
@@ -33,40 +32,46 @@ namespace Core.Services
             return _mapper.Map<TViewModel>(entity);
         }
 
-        public void Add(TViewModel viewModel)
+        public TViewModel Add(TViewModel viewModel)
         {
             TEntity entity = _mapper.Map<TEntity>(viewModel);
             _repository.Add(entity);
+            return viewModel;
         }
 
-        public void AddRange(IEnumerable<TViewModel> viewModels)
+        public IEnumerable<TViewModel> AddRange(IEnumerable<TViewModel> viewModels)
         {
             IEnumerable<TEntity> entities = _mapper.Map<IEnumerable<TEntity>>(viewModels);
             _repository.AddRange(entities);
+            return viewModels;
         }
 
-        public void Update(TViewModel viewModel)
+        public TViewModel Update(TViewModel viewModel)
         {
             TEntity entity = _mapper.Map<TEntity>(viewModel);
             _repository.Update(entity);
+            return viewModel;
         }
 
-        public void UpdateRange(IEnumerable<TViewModel> viewModels)
+        public IEnumerable<TViewModel> UpdateRange(IEnumerable<TViewModel> viewModels)
         {
             IEnumerable<TEntity> entities = _mapper.Map<IEnumerable<TEntity>>(viewModels);
             _repository.UpdateRange(entities);
+            return viewModels;
         }
 
-        public void Remove(TViewModel viewModel)
+        public TViewModel Remove(TViewModel viewModel)
         {
             TEntity entity = _mapper.Map<TEntity>(viewModel);
             _repository.Remove(entity);
+            return viewModel;
         }
 
-        public void RemoveRange(IEnumerable<TViewModel> viewModels)
+        public IEnumerable<TViewModel> RemoveRange(IEnumerable<TViewModel> viewModels)
         {
             IEnumerable<TEntity> entities = _mapper.Map<IEnumerable<TEntity>>(viewModels);
             _repository.RemoveRange(entities);
+            return viewModels;
         }
     }
 }

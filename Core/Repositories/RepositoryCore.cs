@@ -5,17 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Repositories
 {
-    public class Repository<TEntity, TId>  : IRepository<TEntity, TId> 
+    public class RepositoryCore<TEntity, TId>  : IRepositoryCore<TEntity, TId> 
         where TEntity : class, IEntity<TId>
         where TId : class
     {
-        private DbContext _context;
+        private readonly DbContext _context;
 
-        public Repository(DbContext context)
-        {
-            _context = context;
-        }
-        
+        public RepositoryCore(DbContext context) => _context = context;
+
         public IEnumerable<TEntity> GetAll() => _context.Set<TEntity>();
 
         public TEntity GetById(TId id) => _context.Set<TEntity>()

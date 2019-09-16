@@ -4,7 +4,7 @@ using Core.Models;
 
 namespace Core.Services
 {
-    public interface IService<TViewModel, TEntity, TId> 
+    public interface IServiceCore<TViewModel, TEntity, TId> 
         where TViewModel : IViewModel<TId>
         where TEntity : IEntity<TId>
         where TId : class
@@ -12,13 +12,13 @@ namespace Core.Services
         IEnumerable<TViewModel> GetAll();
         TViewModel GetById(TId id);
 
-        void Add(TViewModel viewModel);
-        void AddRange(IEnumerable<TViewModel> viewModel);
+        TViewModel Add(TViewModel viewModel);
+        IEnumerable<TViewModel> AddRange(IEnumerable<TViewModel> viewModel);
 
-        void Update(TViewModel entity);
-        void UpdateRange(IEnumerable<TViewModel> viewModels);
+        TViewModel Update(TViewModel viewModel);
+        IEnumerable<TViewModel> UpdateRange(IEnumerable<TViewModel> viewModels);
 
-        void Remove(TViewModel viewModel);
-        void RemoveRange(IEnumerable<TViewModel> entities);
+        TViewModel Remove(TViewModel viewModel);
+        IEnumerable<TViewModel> RemoveRange(IEnumerable<TViewModel> viewModels);
     }
 }
