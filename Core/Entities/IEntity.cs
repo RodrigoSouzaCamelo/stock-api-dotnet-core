@@ -1,6 +1,6 @@
 namespace Core.Entities
 {
-    public interface IEntity<TId> where TId : class
+    public interface IEntity<TId>
     {
         TId Id { get; set; }
     }
