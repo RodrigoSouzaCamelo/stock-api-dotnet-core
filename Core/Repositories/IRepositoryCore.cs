@@ -5,7 +5,6 @@ namespace Core.Repositories
 {
     public interface IRepositoryCore<TEntity, TId>
         where TEntity : IEntity<TId>
-        where TId : class
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(TId id);

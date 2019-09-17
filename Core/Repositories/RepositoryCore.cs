@@ -7,7 +7,6 @@ namespace Core.Repositories
 {
     public class RepositoryCore<TEntity, TId>  : IRepositoryCore<TEntity, TId> 
         where TEntity : class, IEntity<TId>
-        where TId : class
     {
         private readonly DbContext _context;
 
@@ -16,14 +15,14 @@ namespace Core.Repositories
         public IEnumerable<TEntity> GetAll() => _context.Set<TEntity>();
 
         public TEntity GetById(TId id) => _context.Set<TEntity>()
-            .SingleOrDefault(x => x.Id == id);
+            .SingleOrDefault(x => x.Id.Equals(id));
 
         public IEnumerable<TEntity> GetAllAsNoTracking() => _context.Set<TEntity>()
             .AsNoTracking();
 
         public TEntity GetByIdAsNoTracking(TId id) => _context.Set<TEntity>()
             .AsNoTracking()
-            .SingleOrDefault(x => x.Id == id);
+            .SingleOrDefault(x => x.Id.Equals(id));
 
         public void Add(TEntity entity)
         {
