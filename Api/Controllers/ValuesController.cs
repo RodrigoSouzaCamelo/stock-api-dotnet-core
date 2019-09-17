@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Api.Data.Entities;
 using Api.Data.Models;
+using Api.Services;
 using Core.Controllers;
 using Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ namespace Api.Controllers
     [ApiController]
     public class ValuesController : ControllerCore<ValueModel, Value, int>
     {
-        public ValuesController(IServiceCore<ValueModel, Value, int> service) : base(service)
+        public ValuesController(IValueService service) : base(service)
         {
         }
     }

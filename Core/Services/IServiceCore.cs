@@ -7,7 +7,7 @@ namespace Core.Services
     public interface IServiceCore<TViewModel, TEntity, TId> 
         where TViewModel : IViewModel<TId>
         where TEntity : IEntity<TId>
-        where TId : class
+        where TId : struct
     {
         IEnumerable<TViewModel> GetAll();
         TViewModel GetById(TId id);

@@ -10,7 +10,7 @@ namespace Core.Controllers
     public interface IControllerCore<TViewModel, TEntity, TId>
         where TViewModel : class, IViewModel<TId>
         where TEntity : class, IEntity<TId>
-        where TId : class
+        where TId : struct
     {
         ActionResult<IEnumerable<TViewModel>> GetAll();
         ActionResult<TViewModel> GetById(TId id);
