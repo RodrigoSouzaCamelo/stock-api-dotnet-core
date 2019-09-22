@@ -3,6 +3,8 @@ using AutoMapper;
 using Core.Entities;
 using Core.Models;
 using Core.Repositories;
+using Core.Repositories.Interfaces;
+using Core.Services.Interfaces;
 
 namespace Core.Services
 {

@@ -1,3 +1,5 @@
+using Core.Models.Interfaces;
+
 namespace Core.Models
 {
     public abstract class ViewModel<TId> : IViewModel<TId>

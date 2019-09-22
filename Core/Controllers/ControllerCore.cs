@@ -1,7 +1,11 @@
 using System.Collections.Generic;
+using Core.Controllers.Interfaces;
 using Core.Entities;
+using Core.Entities.Interfaces;
 using Core.Models;
+using Core.Models.Interfaces;
 using Core.Services;
+using Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Controllers
