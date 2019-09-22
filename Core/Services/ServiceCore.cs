@@ -9,7 +9,7 @@ namespace Core.Services
     public class Service<TViewModel, TEntity, TId> : IServiceCore<TViewModel, TEntity, TId>
         where TViewModel : ViewModel<TId>
         where TEntity : Entity<TId>
-        where TId : class
+        where TId : struct
     {
         private readonly IRepositoryCore<TEntity, TId> _repository;
         private readonly IMapper _mapper;

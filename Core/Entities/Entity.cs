@@ -1,6 +1,7 @@
 namespace Core.Entities
 {
-    public abstract class Entity<TId> : IEntity<TId>
+    public class Entity<TId> : IEntity<TId> 
+        where TId : struct
     {
         public virtual TId Id { get; set; }
     }

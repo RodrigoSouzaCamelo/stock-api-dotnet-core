@@ -7,7 +7,7 @@ namespace Core.Repositories
 {
     public class RepositoryCore<TEntity, TId>  : IRepositoryCore<TEntity, TId> 
         where TEntity : class, IEntity<TId>
-        where TId : class
+        where TId : struct
     {
         private readonly DbContext _context;
 

@@ -9,7 +9,7 @@ namespace Core.Controllers
     public class ControllerCore<TViewModel, TEntity, TId> : ControllerBase, IControllerCore<TViewModel, TEntity, TId>
         where TViewModel : class, IViewModel<TId>
         where TEntity : class, IEntity<TId>
-        where TId : class
+        where TId : struct
     {
         private readonly IServiceCore<TViewModel, TEntity, TId> _service;
 
