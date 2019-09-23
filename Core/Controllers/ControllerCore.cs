@@ -19,28 +19,36 @@ namespace Core.Controllers
 
         public ControllerCore(IServiceCore<TViewModel, TEntity, TId> service) => _service = service;
 
+        [HttpGet]
         public ActionResult<IEnumerable<TViewModel>> GetAll()
             => Ok(_service.GetAll());
 
-        public ActionResult<TViewModel> GetById(TId id)
+        [HttpGet("{id}")]
+        public ActionResult<TViewModel> GetById([FromRoute]TId id)
             => Ok(_service.GetById(id));
 
-        public ActionResult Add(TViewModel viewModel)
+        [HttpPost("Add")]
+        public ActionResult Add([FromBody]TViewModel viewModel)
             => Ok(_service.Add(viewModel));
 
-        public ActionResult AddRange(IEnumerable<TViewModel> viewModels)
+        [HttpPost("AddRange")]
+        public ActionResult AddRange([FromBody]IEnumerable<TViewModel> viewModels)
             => Ok(_service.AddRange(viewModels));
 
-        public ActionResult Update(TViewModel viewModel)
+        [HttpPut("Update")]
+        public ActionResult Update([FromBody]TViewModel viewModel)
             => Ok(_service.Update(viewModel));
 
-        public ActionResult UpdateRange(IEnumerable<TViewModel> viewModels)
+        [HttpPut("UpdateRange")]
+        public ActionResult UpdateRange([FromBody]IEnumerable<TViewModel> viewModels)
             => Ok(_service.UpdateRange(viewModels));
 
-        public ActionResult Remove(TViewModel viewModel)
+        [HttpDelete("Remove")]
+        public ActionResult Remove([FromBody]TViewModel viewModel)
             => Ok(_service.Remove(viewModel));
 
-        public ActionResult RemoveRange(IEnumerable<TViewModel> viewModels)
+        [HttpDelete("RemoveRange")]
+        public ActionResult RemoveRange([FromBody]IEnumerable<TViewModel> viewModels)
             => Ok(_service.RemoveRange(viewModels));
     }
 }
