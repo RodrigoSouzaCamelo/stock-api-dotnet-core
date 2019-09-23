@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  app:
+    image: stock-api
+    ports: 
+      - "5000:80"
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+    networks:
+      - stock-api-network
+
+networks:
+  stock-api-network:
+    driver: bridge
