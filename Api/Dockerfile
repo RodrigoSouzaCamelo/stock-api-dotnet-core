@@ -6,8 +6,13 @@ COPY . .
 RUN dotnet restore
 
 # Copy everything else and build
-#COPY ./Api .
 RUN dotnet publish Api/Api.csproj -c Release -o out
+
+# Migrating the Database
+RUN dotnet ef database update --project Api/Api.csproj
+
+# Copy the created database
+RUN cp Api/stock.db Api/out/stock.db
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
